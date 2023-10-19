@@ -1,13 +1,13 @@
 <template>
   <div class="container">
-    <label>Texto a cifrar:</label>
-    <input v-model="txtOriginal" />
+    <label>Mensaje a cifrar:</label>
+    <input v-model="mensaje" />
 
     <button @click="cifrar">Cifrar</button>
-    <p>Texto cifrado: {{ txtCifrado }}</p>
+    <p>Mensaje cifrado: {{ mensaje_Cifrado }}</p>
 
     <button @click="descifrar">Descifrar</button>
-    <p>Texto descifrado: {{ txtDescifrado }}</p>
+    <p>Mensaje descifrado: {{ mensaje_Descifrado }}</p>
   </div>
 </template>
 
@@ -17,27 +17,27 @@ import CryptoJS from "crypto-js";
 export default {
   data() {
     return {
-      txtOriginal: "",
-      txtCifrado: "",
-      txtDescifrado: "",
+      mensaje: "",
+      mensaje_Cifrado: "",
+      mensaje_Descifrado: "",
       clave: "carlos18",
     };
   },
   methods: {
     cifrar() {
-      this.txtCifrado = CryptoJS.DES.encrypt(this.txtOriginal, this.clave).toString();
+      this.mensaje_Cifrado = CryptoJS.DES.encrypt(this.mensaje, this.clave).toString();
     },
     descifrar() {
-      const bytes = CryptoJS.DES.decrypt(this.txtCifrado, this.clave);
-      this.txtDescifrado = bytes.toString(CryptoJS.enc.Utf8);
+      const bytes = CryptoJS.DES.decrypt(this.mensaje_Cifrado, this.clave);
+      this.mensaje_Descifrado = bytes.toString(CryptoJS.enc.Utf8);
     },
   },
 };
 </script>
 
-<style scoped>
+<style>
 .container {
-  max-width: 400px;
+  max-width: 500px;
   margin: auto;
   padding: 20px;
   border: 1px solid #ccc;
@@ -47,16 +47,19 @@ export default {
 
 label {
   display: block;
+  text-align: center;
   margin-bottom: 10px;
 }
 
 input {
-  width: 100%;
+  width: 96%;
   padding: 8px;
   margin-bottom: 15px;
 }
 
 button {
+  margin-left: 40%;
+  width: 100px;
   background-color: #4caf50;
   color: white;
   padding: 10px 15px;
@@ -71,6 +74,6 @@ button:hover {
 
 p {
   margin-top: 15px;
-  font-weight: bold;
+  text-align: center;
 }
 </style>
