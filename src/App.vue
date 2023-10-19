@@ -20,7 +20,7 @@ export default {
       txtOriginal: "",
       txtCifrado: "",
       txtDescifrado: "",
-      clave: "agus010402",
+      clave: "carlos18",
     };
   },
   methods: {
